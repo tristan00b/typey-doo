@@ -1,0 +1,38 @@
+{
+  "name": "typey-doo",
+  "version": "0.1.0",
+  "description": "TypeScript Utility Types and Helper Functions",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "tsc"
+  },
+  "keywords": [
+    "typescript",
+    "ts",
+    "types",
+    "util",
+    "utilities"
+  ],
+  "author": {
+    "name": "Tristan Bayfield",
+    "url": "https://github.com/tristan00b"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://githib.com/tristan00b/typey-doo"
+  },
+  "tsd": {
+    "directory": "./src/test"
+  },
+  "types": "./src/lib/types.d.ts",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "eslint": "^8.6.0",
+    "jest": "^27.4.7",
+    "np": "^7.6.0",
+    "tsd": "^0.19.1"
+  }
+}
