@@ -62,6 +62,44 @@ Performs a shallow check to determine whether all elements of a given list `T` o
 
 Evaluates to a type `A` if `Cond` has type `true`, or `B` when `Cond` has type `false`.
 
+## Tuples
+
+### type: `Concat<A extends unknown[], B extends unknown []>`
+
+Concatenates a pair of tupes `A` and `B`.
+
+### type: `Drop<T extends unknown[]>`
+
+Evaluates to the tuple matching `T` but with the last element removed.
+
+Aliases: `OmitLast`
+
+### type: `Head<T extends unknown[]>`
+
+Evaluates to the type of the first element of `T`
+
+### type: `Last<T extends unknown[]>`
+
+Evaluates to the type of the last element of `T`
+
+### type: `Tail<T extends unknown[]>`
+
+Evaluates to the tuple matching `T` but with the first element removed.
+
+Aliases: `Rest`, `OmitFirst`
+
+### type: `FindIndex<V, T extends unknown[]>`
+
+Finds the index of an element `V` in tuple `T`, or `never` if not found.
+
+### type: `Filter<V, T extends unknown[]>`
+
+Filters any elements of type `V` from tuple `T`.
+
+### type: `Repeat<V, N extends number>`
+
+Generates a tuple of `N` occurrences of type `V`
+
 ## Functions
 
 *TODO*
