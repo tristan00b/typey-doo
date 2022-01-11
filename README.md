@@ -2,7 +2,7 @@
 
 ## What it is?
 
-*typey-doo* is a library of utility types and helper functions to help with your [TypeScript](https://www.typescriptlang.org/) projects. *I do declare!*
+*typey-doo* is a library of utility types and helper functions to help with your [TypeScript](https://www.typescriptlang.org/) projects. *I doo declare!*
 
 ## What it do?
 
@@ -12,7 +12,7 @@ It *doo* a lot! As much as I need it to do in my own projects... *And, probably 
 
 ## *Boolean Algebra &mdash; Simply bootiful!*
 
-### type: `NOT<A extends boolean> extends boolean`
+### type: `NOT<A extends boolean>`
 
 Negates a boolean.
 
@@ -28,7 +28,7 @@ OR's two booleans.
 
 XOR's two booleans.
 
-### type: `NAND<A extends boolean, B extends boolean> = NOT<AND<A, B>>`
+### type: `NAND<A extends boolean, B extends boolean>`
 
 NAND's two booleans.
 
@@ -50,9 +50,9 @@ Determines whether a type `T` is [falsy](https://developer.mozilla.org/en-US/doc
 
 Determines whether a type `T` is [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy).
 
-### type: `type Equal<U, V>`
+### type: `Equal<U, V>`
 
-Performs a shallow check to determine whether types `T` and `U` are the same.
+Performs a shallow check to determine whether types `U` and `V` are the same.
 
 ### type: `AllEqual<T extends unknown[]>`
 
