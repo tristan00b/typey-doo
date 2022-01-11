@@ -34,13 +34,18 @@ export declare type Falsy<T> =
   //   export declare type  _4 = typeof (-Infinity) // parse error ts(1003): Identifier expected
   T extends (false|0|0n|''|null|undefined) ? true : false
 
-export declare type Truthy<T> = NOT<Falsy<T>> extends true ? true : false
+export declare type Truthy<T> = NOT<Falsy<T>>
 
 export declare type Equal<U, V> =
-  U extends V ? V extends U ? true : false : false
+  [U] extends [V] ? [V] extends [U] ? true : false : false
 
-export declare type AllEqual<T extends unknown[], H = Head<T>> =
-  T extends [] ? boolean : AND<Equal<H, Head<T>>, AllEqual<Tail<T>, H>>
+export declare type AllEqual<T extends unknown[]> =
+  T['length'] extends 0 ? boolean
+: T['length'] extends 1 ? true
+// : T['length'] extends 2 ? Equal<T[0], T[1]>
+: T extends [infer U, infer V] ? Equal<U, V>
+: T extends [infer U, ...infer V] ? AND<Equal<U, V[0]>, AllEqual<V>>
+: never
 
 export declare type If<Cond extends boolean, A, B> =
   Cond extends true  ? A

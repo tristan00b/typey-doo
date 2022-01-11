@@ -11,17 +11,24 @@
 \* ------------------------------------------------------------------------------------------------------------------ */
 
 export declare type NOT<A extends boolean> =
-  A extends true ? false : true
+  boolean extends A ? boolean
+: A extends true ? false : true
 
 export declare type AND<A extends boolean, B extends boolean> =
-  A extends false ? false
-: B extends false ? false
-: true
+  boolean extends A ? A&B
+: boolean extends B ? A&B
+: true extends A ?
+    true extends B ?
+      true
+    : false
+  : false
 
 export declare type OR<A extends boolean, B extends boolean> =
-  A extends true ? true
-: B extends true ? true
-: false
+  A extends false ?
+    B extends false ?
+      false
+    : A|B
+  : A|B
 
 export declare type XOR<A extends boolean, B extends boolean> =
   A extends B ? B extends A ? false : true : true

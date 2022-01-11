@@ -21,7 +21,7 @@ import type {
 { // NOT
   expectType<NOT<true>>(false)
   expectType<NOT<false>>(true)
-  expectType<NOT<true|false>>({} as boolean)
+  expectType<NOT<boolean>>({} as boolean)
 }
 
 { // AND
@@ -30,7 +30,7 @@ import type {
   expectType<AND<true, false>>(false)
   expectType<AND<true, true>>(true)
 
-  expectType<AND<boolean, true>>({} as boolean)
+  expectType<AND<boolean, true>>(true)
   expectType<AND<boolean, false>>(false)
   expectType<AND<boolean, boolean>>({} as boolean)
 }
@@ -41,7 +41,7 @@ import type {
   expectType<OR<true, false>>(true)
   expectType<OR<true, true>>(true)
 
-  expectType<OR<boolean, true>>(true)
+  expectType<OR<boolean, true>>({} as boolean)
   expectType<OR<boolean, false>>({} as boolean)
   expectType<OR<boolean, boolean>>({} as boolean)
 }
@@ -63,7 +63,7 @@ import type {
   expectType<NAND<true, false>>(true)
   expectType<NAND<true, true>>(false)
 
-  expectType<NAND<boolean, true>>({} as boolean)
+  expectType<NAND<boolean, true>>(false)
   expectType<NAND<boolean, false>>(true)
   expectType<NAND<boolean, boolean>>({} as boolean)
 }
@@ -74,7 +74,7 @@ import type {
   expectType<NOR<true, false>>(false)
   expectType<NOR<true, true>>(false)
 
-  expectType<NOR<boolean, true>>(false)
+  expectType<NOR<boolean, true>>({} as boolean)
   expectType<NOR<boolean, false>>({} as boolean)
   expectType<NOR<boolean, boolean>>({} as boolean)
 }
