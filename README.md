@@ -40,6 +40,28 @@ NOR's two booleans.
 
 XNOR's two booleans.
 
+## *Comparisons &mdash; I know right?!*
+
+### type: `Falsy<T>`
+
+Determines whether a type `T` is [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy).
+
+### type: `Truthy<T>`
+
+Determines whether a type `T` is [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy).
+
+### type: `type Equal<U, V>`
+
+Performs a shallow check to determine whether types `T` and `U` are the same.
+
+### type: `AllEqual<T extends unknown[]>`
+
+Performs a shallow check to determine whether all elements of a given list `T` of types are the same.
+
+### type: `If<Cond extends boolean, A, B>`
+
+Evaluates to a type `A` if `Cond` has type `true`, or `B` when `Cond` has type `false`.
+
 ## Functions
 
 *TODO*
