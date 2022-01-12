@@ -62,7 +62,7 @@ Performs a shallow check to determine whether all elements of a given list `T` o
 
 Evaluates to a type `A` if `Cond` has type `true`, or `B` when `Cond` has type `false`.
 
-## Tuples
+## *Tuples &mdash; It's tuples all the way down!*
 
 ### type: `Concat<A extends unknown[], B extends unknown []>`
 
