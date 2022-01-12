@@ -13,7 +13,6 @@ import type {
 
 import type {
   Head,
-  Tail,
 } from './tuple'
 
 /* ------------------------------------------------------------------------------------------------------------------ *\
@@ -23,15 +22,15 @@ import type {
 export declare type Falsy<T> =
   // In JS: false, 0, -0, 0n, "", null, undefined, and NaN. Everything else is truthy.
   // In TS:
-  // - The -0 literal export declare type is equivalent to the 0 literal type.
+  // - The -0 literal type is equivalent to the 0 literal type.
   // - The values NaN, Infinity, -Infinity don't have literal types that can easily
-  //   be tested for. They are all of export declare type number.
+  //   be tested for. They are all of type number.
   // - More specifically:
-  //   export declare type  _0 = -0                 // 0
-  //   export declare type  _1 = typeof NaN         // number
-  //   export declare type  _2 = typeof Infinity    // number
-  //   export declare type  _3 = typeof (-0)        // parse error ts(1003): Identifier expected
-  //   export declare type  _4 = typeof (-Infinity) // parse error ts(1003): Identifier expected
+  //   type  _0 = -0                 // 0
+  //   type  _1 = typeof NaN         // number
+  //   type  _2 = typeof Infinity    // number
+  //   type  _3 = typeof (-0)        // parse error ts(1003): Identifier expected
+  //   type  _4 = typeof (-Infinity) // parse error ts(1003): Identifier expected
   T extends (false|0|0n|''|null|undefined) ? true : false
 
 export declare type Truthy<T> = NOT<Falsy<T>>
@@ -40,11 +39,10 @@ export declare type Equal<U, V> =
   [U] extends [V] ? [V] extends [U] ? true : false : false
 
 export declare type AllEqual<T extends unknown[]> =
-  T['length'] extends 0 ? boolean
-: T['length'] extends 1 ? true
-// : T['length'] extends 2 ? Equal<T[0], T[1]>
+  T extends [] ? boolean
+: T extends [infer _] ? true
 : T extends [infer U, infer V] ? Equal<U, V>
-: T extends [infer U, ...infer V] ? AND<Equal<U, V[0]>, AllEqual<V>>
+: T extends [infer U, ...infer V] ? AND<Equal<U, Head<V>>, AllEqual<V>>
 : never
 
 export declare type If<Cond extends boolean, A, B> =
