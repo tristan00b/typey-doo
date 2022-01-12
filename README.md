@@ -52,11 +52,11 @@ Determines whether a type `T` is [truthy](https://developer.mozilla.org/en-US/do
 
 ### type: `Equal<U, V>`
 
-Performs a shallow check to determine whether types `U` and `V` are the same.
+Performs a shallow check to determine whether types `U` and `V` have the same type.
 
 ### type: `AllEqual<T extends unknown[]>`
 
-Performs a shallow check to determine whether all elements of a given list `T` of types are the same.
+Performs a shallow check to determine whether all elements of a given list `T` of types have the same type.
 
 ### type: `If<Cond extends boolean, A, B>`
 
