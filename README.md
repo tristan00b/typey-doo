@@ -100,6 +100,59 @@ Filters any elements of type `V` from tuple `T`.
 
 Generates a tuple of `N` occurrences of type `V`
 
+## *Objects &mdash; Pretty good. Dare I say, objectively good? I doo dare!*
+
+### type: `AllKeys<T extends unknown[]>`
+
+Gives the union of all keys from the elements of `T`.
+
+```ts
+type Keys = AllKeys<[{ 'a': 0 }, { 'b': 1 }, { 'elephant': 42 }]>
+// type Keys = 'a' | 'b' | 'elephant'
+```
+
+### type: `AsObject<T extends unknown[]>`
+
+Takes a tuple type and converts it into an record type.
+
+Use it like so:
+```ts
+const obj: AsObject<[ 'a', 'b', 'c' ]> = { 0: 'a', 1: 'b', 2: 'c' }
+```
+
+### type: `KeysOf<T extends object>`
+
+Maybe you wanted something *more verbose* than the `keyof` operator?!
+
+### type: `Merge<T extends unknown[]>`
+
+Gives the intersection of the elements of `T`.
+
+```ts
+type T0 = Merge<[{ 'a': 0 }, { 'b': 1 }, { 'c': 2 }]>
+// type T0 = { a: 0 } & { b: 1 } & { c: 2 }
+
+const o1: T0 = { a: 0, b: 1, c: 2 }         // Ok!
+const o2: T0 = { a: 0, b: 1, c: 2, x: 'y' } // Error!
+const o3: T0 = { a: 0, b: 1 }               // Error!
+
+type T1 = Merge<[{ a: 0 }, { a: 0, b: 1 }]> // Ok!
+// type T1 = { a: 0 } & { a: 0, b: 1}
+
+type T2 = Merge<[{ a: 0 }, { a: 1 }]>       // Nope!
+// type T2 = never
+
+```
+
+### type: `ValuesOf<T extends object>`
+
+Gives a shallow union of value types of `T`.
+
+```ts
+type Vals = ValuesOf<{ 0: 'a', 1: 'b', 2: 'c', o: { x: 'y' }}>
+// type Vals = 'a' | 'b' | 'c' | { x: 'y' }
+```
+
 ## Functions
 
 *TODO*
