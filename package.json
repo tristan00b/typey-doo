@@ -1,6 +1,6 @@
 {
   "name": "typey-doo",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "TypeScript Utility Types and Helper Functions",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
