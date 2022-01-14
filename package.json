@@ -6,7 +6,7 @@
   "types": "src/index.d.ts",
   "type": "module",
   "scripts": {
-    "test": "tsc"
+    "test": "tsd"
   },
   "keywords": [
     "typescript",
