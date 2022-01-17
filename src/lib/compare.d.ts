@@ -49,12 +49,3 @@ export declare type If<Cond extends boolean, A, B> =
   Cond extends true  ? A
 : Cond extends false ? B
 : A|B
-
-/* ------------------------------------------------------------------------------------------------------------------ *\
-   Expectations
-\* ------------------------------------------------------------------------------------------------------------------ */
-
-export declare type Expect<Cond extends boolean, Expected extends boolean> = Equal<Cond, Expected> extends true ? true : never
-export declare type ExpectTrue <Cond extends boolean> = Expect<Cond, true>
-export declare type ExpectFalse<Cond extends boolean> = Expect<Cond, false>
-export declare type ExpectEqual<A, B> = ExpectTrue<Equal<A, B>>

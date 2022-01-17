@@ -62,6 +62,24 @@ Performs a shallow check to determine whether all elements of a given list `T` o
 
 Evaluates to a type `A` if `Cond` has type `true`, or `B` when `Cond` has type `false`.
 
+## *Expectations &mdash; We've all got &#39;em!*
+
+### type: `Expect<Expected, Actual>`
+
+Gives the expected type back when `Expected` and `Actual` are the same, otherwise `never`.
+
+### type: `ExpectTrue<Actual>`
+
+Gives the type `true` back when `Actual` has type `true`, otherwise `never`.
+
+### type: `ExpectFalse<Actual>`
+
+Gives the type `false` back when `Actual` has type `false`, otherwise `never`.
+
+### type `ExpectEqual<A, B>`
+
+Behaves like `Equal`, giving the type `true` back when types `A` and `B` are of the same type. However, when `A` and `B` are of *differing* types, behaves like `Expect`, giving back `never`.
+
 ## *Tuples &mdash; It's tuples all the way down!*
 
 ### type: `Concat<A extends unknown[], B extends unknown []>`
