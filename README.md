@@ -76,7 +76,7 @@ Gives the type `true` back when `Actual` has type `true`, otherwise `never`.
 
 Gives the type `false` back when `Actual` has type `false`, otherwise `never`.
 
-### type `ExpectEqual<A, B>`
+### type: `ExpectEqual<A, B>`
 
 Behaves like `Equal`, giving the type `true` back when types `A` and `B` are of the same type. However, when `A` and `B` are of *differing* types, behaves like `Expect`, giving back `never`.
 
