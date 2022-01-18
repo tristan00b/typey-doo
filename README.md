@@ -8,8 +8,6 @@
 
 It *doo* a lot! As much as I need it to do in my own projects... *And, probably more!*
 
-## Types
-
 ## *Boolean Algebra &mdash; Simply bootiful!*
 
 ### type: `NOT<A extends boolean>`
@@ -171,9 +169,11 @@ type Vals = ValuesOf<{ 0: 'a', 1: 'b', 2: 'c', o: { x: 'y' }}>
 // type Vals = 'a' | 'b' | 'c' | { x: 'y' }
 ```
 
-## Functions
+## *Asertions &mdash; The key to being assertive!*
 
-*TODO*
+### function: `assert<T>(cond: T, message?: string): asserts cond`
+
+Asserts the thruthiness of `cond`, where an `Error` with the string `message` is thrown upon failing the assertion.
 
 # License
 

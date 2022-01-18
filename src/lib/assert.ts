@@ -1,15 +1,14 @@
 /* ------------------------------------------------------------------------------------------------------------------ *\
 
-   File: index.ts
+   File: assert.ts
    Author: Tristan Bayfield
    License: MIT
 
 \* ------------------------------------------------------------------------------------------------------------------ */
 
-export * from './lib/assert'
-export * from './lib/boolean'
-export * from './lib/compare'
-export * from './lib/expect'
-export * from './lib/number'
-export * from './lib/object'
-export * from './lib/tuple'
+import { fail } from './error'
+
+export function assert<T>(cond: T, message?: string): asserts cond
+{
+  cond || fail('message')
+}

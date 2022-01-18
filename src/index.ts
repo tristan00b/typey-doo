@@ -6,6 +6,7 @@
 
 \* ------------------------------------------------------------------------------------------------------------------ */
 
+export * from './lib/assert'
 export * from './lib/boolean'
 export * from './lib/compare'
 export * from './lib/expect'
