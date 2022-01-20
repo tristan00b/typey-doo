@@ -95,6 +95,63 @@ Performs a shallow check to determine whether all elements of a given list `T` o
 
 Evaluates to a type `A` if `Cond` has type `true`, or `B` when `Cond` has type `false`.
 
+## *Errors &mdash; Oopsies!*
+
+### type: `IsError<T>`
+
+Evaluates to type `true` for any type `T` that extends `Error`, `false` otherwise.
+
+### type: `IsAggregateError<T>`
+
+Evaluates to type `true` for any type `T` that extends `AggregateError`, `false` otherwise.
+
+### function: `concatErrors<Ts extends Error[]>(errors: [...Ts], msg?: string): AggregateError`
+
+Takes a *bunch o' errors* and gives back an `AggregateError`
+
+```ts
+let e0 = new TypeError('Oopsies!')
+
+let e1 = new AggregateError([
+    new Error('Something is wrong!'),
+    new Error('Something else is wrong!')
+  ], 'These happened together')
+
+let e2 = new Error('The icing on the cake!')
+
+let allMyErrors = concatErrors([e0, e1, e2], 'All my Errors in one place!')
+
+console.dir(allMyErrors)
+// AggregateError: All my errors in one place!
+//   columnNumber: 5
+//   errors: Array [ TypeError, AggregateError, Error ]
+//   fileName: "debugger eval code"
+//   lineNumber: 1
+//   message: "All my errors in one place!"
+//   stack: "@debugger eval code:1:5\n"
+//   <prototype>: AggregateError.prototype { stack: "", _ }
+```
+
+### function: `fail(err: string | Error | AggregateError, ErrT: ErrorConstructor = Error): never`
+
+A convenience function that allows errors to be thrown from within an expression:
+
+```ts
+definitelyNotUndefined ?? fail('it was undefined...')
+```
+
+With 2 overloads to choose from!
+
+```ts
+// 1st overload: function fail(err: Error | AggregateError): never
+fail(new Error('Throw me!'))
+fail(new AggregateError([...], 'Throw us!'))
+
+// 2nd overload: function fail(msg: string, ErrT?: ErrorConstructor): never
+fail("Don't make me work for you!")
+fail('...but do it my way!!', TypeError)
+```
+
 ## *Expectations &mdash; We've all got &#39;em!*
 
 ### type: `Expect<Expected, Actual>`
