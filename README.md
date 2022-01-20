@@ -8,6 +8,41 @@
 
 It *doo* a lot! As much as I need it to do in my own projects... *And, probably more!*
 
+##  *Algebraic Types &mdash; Any way you want it!*
+
+### type: `KeysOfUnion<U extends object>`
+
+Gets the union of keys of from a union of objects.
+
+```ts
+type Keys = KeysOfUnion<{ 'A': 0 }|{ 'B': 1 }|{ 'elephant': 2 }>
+// type Keys = 'A'|'B'|'elephant
+```
+
+### type: `UnionToIntersection<U extends object>`
+
+Transforms a union of objects to an intersection of objects.
+
+```ts
+type I = UnionToIntersection<{ 'A': 0 }|{ 'B': 1 }|{ 'elephant': 2 }>
+// type I = { 'A': 0 }&{ 'B': 1 }&{ 'elephant': 2 }
+
+const i0: I = { 'A': 0, 'B': 1, 'elephant': 2 } // Ok!
+const i1: I = { 'A': 1, 'B': 1, 'elephant': 2 } // Nope!
+// Error: type 1 is not assignable to type 0
+```
+
+### type: `MergeIntersection<I extends object>`
+
+Combines an ugly intersection of object types into a single, beautiful object type.
+
+```ts
+type T = MergeIntersection<{ 'A': 0 }&{ 'B': 1 }&{ 'elephant': 2 }>
+// type T = { 'A': 0, 'B': 1, 'elephant': 2 }
+```
+
+Much better!! Now I can sleep easy 😂*zzzzz!*
+
 ## *Boolean Algebra &mdash; Simply bootiful!*
 
 ### type: `NOT<A extends boolean>`
