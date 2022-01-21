@@ -1,3 +1,7 @@
+[![CI](https://github.com/tristan00b/typey-doo/actions/workflows/tests.yml/badge.svg)](https://github.com/tristan00b/typey-doo/actions/workflows/tests.yml)
+[![NPM](https://img.shields.io/npm/v/typey-doo)](https://www.npmjs.com/package/typey-doo)
+[![Downloads](https://img.shields.io/npm/dm/typey-doo.svg)](https://www.npmjs.com/package/typey-doo)
+
 # *It's typey-doo!*
 
 ## What it is?
