@@ -6,6 +6,12 @@
 
 \* ------------------------------------------------------------------------------------------------------------------ */
 
+/** Generic wrapper type for Error constructors */
+export type ErrorCtor<E extends Error> = new (message?: string) => E
+
+/** Generic wrapper type for AggregateError constructors */
+export type AggregateErrorCtor<E extends AggregateError> = new (errors: Iterable<unknown>, message?: string) => E
+
 /** Evaluates to the `true` if `T` extends `ErrorConstructor`, `false` otherwise. */
 export type IsError<T> = T extends Error ? true : false
 
@@ -34,8 +40,11 @@ export function concatErrors<Ts extends Error[]>(errors: [...Ts], msg?: string):
  * @todo Include ErrorOptions when available (>= TypeScript 4.6)
  */
 export function fail(err: Error | AggregateError): never
-export function fail(msg: string, ErrT?: ErrorConstructor): never
-export function fail(err: string | Error | AggregateError, ErrT: ErrorConstructor = Error): never
+export function fail<E extends Error>(msg: string, ErrT?: ErrorConstructor | ErrorCtor<E>): never
+export function fail<
+  T extends string | Error | AggregateError,
+  E extends Error
+>(err: T, ErrT: ErrorConstructor | ErrorCtor<E> = Error): never
 {
   if (isError(err)) throw err
   else throw new ErrT(err)

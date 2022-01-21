@@ -101,6 +101,22 @@ Evaluates to a type `A` if `Cond` has type `true`, or `B` when `Cond` has type `
 
 ## *Errors &mdash; Oopsies!*
 
+### type: `AggregateErrorCtor<E extends AggregateError>`
+
+This type can be used in function signatures that expect a constructor for a subclass of `AggregateError`, without needing to extend the `AggregateErrorConstructor` interface.
+
+See also:
+- [ErrorCtor](#)
+- [fail](#)
+
+### type: `ErrorCtor<E extends Error>`
+
+This type can be used in function signatures that expect a constructor for a subclass of `Error`, without needing to extend the `ErrorConstructor` interface.
+
+See also:
+- [AggregatErrorCtor](#)
+- [fail](#)
+
 ### type: `IsError<T>`
 
 Evaluates to type `true` for any type `T` that extends `Error`, `false` otherwise.
@@ -136,7 +152,7 @@ console.dir(allMyErrors)
 //   <prototype>: AggregateError.prototype { stack: "", _ }
 ```
 
-### function: `fail(err: string | Error | AggregateError, ErrT: ErrorConstructor = Error): never`
+### function: `fail<T extends string|Error|AggregateError, E extends Error>(err: T, ErrT: ErrorConstructor|ErrorCtor<E> = Error): never`
 
 A convenience function that allows errors to be thrown from within an expression:
 
@@ -148,12 +164,12 @@ With 2 overloads to choose from!
 
 ```ts
 // 1st overload: function fail(err: Error | AggregateError): never
-fail(new Error('Throw me!'))
-fail(new AggregateError([...], 'Throw us!'))
+fail(new MyErrorType('Throw me!'))
+fail(new MyAggregateErrorType([...], 'Throw us!'))
 
-// 2nd overload: function fail(msg: string, ErrT?: ErrorConstructor): never
+// 2nd overload: function fail<E extends Error>(msg: string, ErrT?: ErrorConstructor|ErrorCtor<T>): never
 fail("Don't make me work for you!")
-fail('...but do it my way!!', TypeError)
+fail('...but do it my way!!', MyErrorType)
 ```
 
 ## *Expectations &mdash; We've all got &#39;em!*

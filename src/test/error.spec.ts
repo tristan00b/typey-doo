@@ -15,7 +15,10 @@ import {
 describe('fail', () => {
 
   const msg   = 'An error occurred'
-  const ErrTs = [ Error, TypeError, SyntaxError] as const
+  const ErrTs = [ Error, TypeError, SyntaxError ] as const
+
+  class MyErrorType extends Error {}
+  class MyAggregateErrorType extends AggregateError {}
 
   test('it throws an Error argument', () => {
     const shouldThrow = () => fail(new TypeError(msg))
@@ -37,6 +40,21 @@ describe('fail', () => {
 
   test('it throws a message as a given error type', () => {
     const shouldThrow = () => fail(msg, ErrTs[1])
+    expect(shouldThrow).toThrow()
+  })
+
+  test('it accepts a custom Error type argument', () => {
+    const shouldThrow = () => fail(new MyErrorType)
+    expect(shouldThrow).toThrow()
+  })
+
+  test('it throws a custom AggregateError type argument', () => {
+    const shouldThrow = () => fail(new MyAggregateErrorType([]))
+    expect(shouldThrow).toThrow()
+  })
+
+  test('it accepts a constructor for a custom subclass of Error', () => {
+    const shouldThrow = () => fail(msg, MyErrorType)
     expect(shouldThrow).toThrow()
   })
 })
