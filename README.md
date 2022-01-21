@@ -106,16 +106,16 @@ Evaluates to a type `A` if `Cond` has type `true`, or `B` when `Cond` has type `
 This type can be used in function signatures that expect a constructor for a subclass of `AggregateError`, without needing to extend the `AggregateErrorConstructor` interface.
 
 See also:
-- [ErrorCtor](#)
-- [fail](#)
+- [ErrorCtor](#type-errorctore-extends-error)
+- [fail](#function-failt-extends-stringerroraggregateerror-e-extends-errorerr-t-errt-errorconstructorerrorctore--error-never)
 
 ### type: `ErrorCtor<E extends Error>`
 
 This type can be used in function signatures that expect a constructor for a subclass of `Error`, without needing to extend the `ErrorConstructor` interface.
 
 See also:
-- [AggregatErrorCtor](#)
-- [fail](#)
+- [AggregatErrorCtor](#type-aggregateerrorctore-extends-aggregateerror)
+- [fail](#function-failt-extends-stringerroraggregateerror-e-extends-errorerr-t-errt-errorconstructorerrorctore--error-never)
 
 ### type: `IsError<T>`
 
