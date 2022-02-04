@@ -32,14 +32,15 @@ export function concatErrors<Ts extends Error[]>(errors: [...Ts], msg?: string):
   return rst.reduce(reducer, new AggregateError([fst], msg))
 }
 
-export function joinErrors<Ts extends Error[]>(errors: [...Ts], msg?: string): AggregateError
-{
-  const flatten = (errors: Error[]): Error[] => {
-    return errors.flatMap(err => isAggregateError(err) ? flatten(err.errors) : err)
-  }
+// /** Flattens and merges a list of errors and/or aggregate errors into a single instance of AggregateError. */
+// export function flattenErrors<Ts extends Error[]>(errors: [...Ts], msg?: string): AggregateError
+// {
+//   const flatten = (errors: Error[]): Error[] => {
+//     return errors.flatMap(err => isAggregateError(err) ? flatten(err.errors) : err)
+//   }
 
-  return new AggregateError(flatten(errors), msg)
-}
+//   return new AggregateError(flatten(errors), msg)
+// }
 
 /**
  * Wraps a throw statement in a function call, enabling throws within expressions.
