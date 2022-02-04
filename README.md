@@ -228,6 +228,55 @@ Filters any elements of type `V` from tuple `T`.
 
 Generates a tuple of `N` occurrences of type `V`
 
+## *Nominals &mdash; A rose by any other name would fail to type check!*
+
+### type: `TaggedType<T extends string, U>`
+
+Creates a tagged type for a common underlying type.
+
+```ts
+type Seconds  = TaggedType<'Seconds', number>
+type Meters   = TaggedType<'Meters', number>
+type Velocity = TaggedType<'Meters/Second', number>
+
+declare function getVelocity(d: Meters, t: Seconds): Velocity
+
+// ...
+
+const d: Meters  = ...
+const t: Seconds = ...
+
+const v0 = getVelocity(4, 2) // Error!
+const v1 = getVelocity(t, d) // Error!
+const v2 = getVelocity(d, t) // Ok!
+```
+
+### function: `to<T extends ...>(value: ValueType<T>): T`
+
+Casts a value of some type `V` to a tagged type of the same underlying type `V`.
+
+```ts
+const d: Meters  = to<Meters>(4)
+const t: Seconds = to<Seconds>(2)
+
+let x: number = 9000
+x = d // Error!
+x = t // Error!
+```
+
+### function: `fr<T extends ...>(value: T): ValueType<T>`
+
+Casts a tagged type back to its underlying type.
+
+```ts
+const d: Meters = ...
+
+let x: number = 9000
+x = d             // Error!
+x = fr<Meters>(d) // Ok!
+x = fr(d)         // Ok! TypeScript is smart enough to infer T
+```
+
 ## *Objects &mdash; Pretty good. Dare I say, objectively good? I doo dare!*
 
 ### type: `AllKeys<T extends unknown[]>`
