@@ -38,13 +38,13 @@ import type {
 }
 
 { // Head
-  expectType<Head<[]>>({} as never)
+  expectType<Head<[]>>(undefined)
   expectType<Head<[0]>>(0)
   expectType<Head<[0,1,2,3]>>(0)
 }
 
 { // Last
-  expectType<Last<[]>>({} as never)
+  expectType<Last<[]>>(undefined)
   expectType<Last<[0]>>(0)
   expectType<Last<[0,1,2,3]>>(3)
 }

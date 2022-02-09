@@ -23,8 +23,8 @@ import type {
 export declare type Concat<A extends unknown[], B extends unknown []> = [ ...A, ...B ]
 
 export declare type Drop<T extends unknown[]> = T extends [ ...infer U, infer _ ] ? U : []
-export declare type Head<T extends unknown[]> = T extends [ infer U, ...infer _ ] ? U : never
-export declare type Last<T extends unknown[]> = T extends [ ...infer _, infer U ] ? U : never
+export declare type Head<T extends unknown[]> = T extends [ infer U, ...infer _ ] ? U : undefined
+export declare type Last<T extends unknown[]> = T extends [ ...infer _, infer U ] ? U : undefined
 export declare type Tail<T extends unknown[]> = T extends [ infer _, ...infer U ] ? U : []
 
 /** @todo */
