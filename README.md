@@ -127,7 +127,7 @@ Evaluates to type `true` for any type `T` that extends `AggregateError`, `false`
 
 ### function: `concatErrors<Ts extends Error[]>(errors: [...Ts], msg?: string): AggregateError`
 
-Takes a *bunch o' errors* and gives back an `AggregateError`
+Takes a *bunch o' errors* and gives back an `AggregateError`.
 
 ```ts
 let e0 = new TypeError('Oopsies!')
@@ -204,11 +204,11 @@ Aliases: `OmitLast`
 
 ### type: `Head<T extends unknown[]>`
 
-Evaluates to the type of the first element of `T`
+Evaluates to the type of the first element of `T` when `T` is a nonempty tuple, otherwise `undefined`.
 
 ### type: `Last<T extends unknown[]>`
 
-Evaluates to the type of the last element of `T`
+Evaluates to the type of the last element of `T` when `T` is a nonempty tuple, otherwise `undefined`.
 
 ### type: `Tail<T extends unknown[]>`
 
@@ -226,7 +226,7 @@ Filters any elements of type `V` from tuple `T`.
 
 ### type: `Repeat<V, N extends number>`
 
-Generates a tuple of `N` occurrences of type `V`
+Generates a tuple of `N` occurrences of type `V`.
 
 ## *Nominals &mdash; A rose by any other name would fail to type check!*
 
