@@ -332,9 +332,11 @@ type Vals = ValuesOf<{ 0: 'a', 1: 'b', 2: 'c', o: { x: 'y' }}>
 
 ## *Asertions &mdash; The key to being assertive!*
 
-### function: `assert<T>(cond: T, message?: string): asserts cond`
+### function:
+  - `assert(cond, error?): asserts cond`
+  - `assert(cond, message?, ErrT?): asserts cond`
 
-Asserts the thruthiness of `cond`, where an `Error` with the string `message` is thrown upon failing the assertion.
+Asserts the thruthiness of `cond`, throwing either an optional error instance `error`, or a string `message` as either an instance of `Error` or an optionally specified error type `ErrT`.
 
 # License
 
