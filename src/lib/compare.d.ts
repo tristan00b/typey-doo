@@ -19,6 +19,7 @@ import type {
    Comparisons
 \* ------------------------------------------------------------------------------------------------------------------ */
 
+/** Evaluates the falsiness of a given type */
 export declare type Falsy<T> =
   // In JS: false, 0, -0, 0n, "", null, undefined, and NaN. Everything else is truthy.
   // In TS:
@@ -33,11 +34,14 @@ export declare type Falsy<T> =
   //   type  _4 = typeof (-Infinity) // parse error ts(1003): Identifier expected
   T extends (false|0|0n|''|null|undefined) ? true : false
 
+/** Evaluates the truthiness of a given type */
 export declare type Truthy<T> = NOT<Falsy<T>>
 
+/** Determines whether its two types are of the same type */
 export declare type Equal<U, V> =
   [U] extends [V] ? [V] extends [U] ? true : false : false
 
+/** Determines whether an array of types are all of the same type */
 export declare type AllEqual<T extends unknown[]> =
   T extends [] ? boolean
 : T extends [infer _] ? true
@@ -45,6 +49,7 @@ export declare type AllEqual<T extends unknown[]> =
 : T extends [infer U, ...infer V] ? AND<Equal<U, Head<V>>, AllEqual<V>>
 : never
 
+/** Evaluates to `A` with `Cond` is truthy, and `B` when `Cond` is falsy */
 export declare type If<Cond extends boolean, A, B> =
   Cond extends true  ? A
 : Cond extends false ? B

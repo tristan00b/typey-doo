@@ -24,10 +24,12 @@ export declare type KeysOf  <T extends object> = { [ key in keyof T ]:   key  }[
 /** Returns a union of the scalars of T */
 export declare type ValuesOf<T extends object> = { [ key in keyof T ]: T[key] }[ keyof T ]
 
+/** Returns the union of keys of an array of object types */
 export declare type AllKeys<T extends unknown[]> =
   T extends [] ? never :
   T extends [infer U, ...infer V] ? keyof U | AllKeys<V> : never
 
+/** Merges an array of object types */
 export declare type Merge<T extends unknown[]> =
   T extends [] ? {} :
   T extends [infer U, ...infer V] ? U & Merge<V> : {}

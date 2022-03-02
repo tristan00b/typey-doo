@@ -32,6 +32,7 @@ export function concatErrors<Ts extends Error[]>(errors: [...Ts], msg?: string):
   return rst.reduce(reducer, new AggregateError([fst], msg))
 }
 
+/** @todo */
 // /** Flattens and merges a list of errors and/or aggregate errors into a single instance of AggregateError. */
 // export function flattenErrors<Ts extends Error[]>(errors: [...Ts], msg?: string): AggregateError
 // {

@@ -37,8 +37,10 @@ export type HexDigit = _0 | _1 | _2 | _3 | _4 | _5 | _6 | _7 | _8 | _9 | _A | _B
    Checks
 \* ------------------------------------------------------------------------------------------------------------------ */
 
+/** Reports whether a number `N` is negative */
 export type IsNegative<N extends number> =
   `${ N }` extends `-${ infer _Num }` ? true : false
 
+/** Reports whether a number `N` is real */
 export type IsReal<N extends number> =
   `${ N }` extends `${ infer _Integer }.${ infer _Decimal }` ? true : false
