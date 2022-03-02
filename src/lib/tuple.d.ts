@@ -68,7 +68,7 @@ type _Repeat<
   ? []
   : [ V, ..._Repeat<V, N, [0, ...U]> ]
 
-type Repeat<T, N extends number> =
+export type Repeat<T, N extends number> =
   IsReal<N>     extends true ? never :
   IsNegative<N> extends true ? never :
   _Repeat<T, N>
