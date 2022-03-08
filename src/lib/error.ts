@@ -62,13 +62,13 @@ export function fail<
 }
 
 /** Returns `true` when `value` is an instance of either `Error`, or one of its subclasses, otherwise `false`. */
-export function isError(value: unknown): value is Error
+export function isError<E extends Error>(value: unknown): value is E
 {
   return value instanceof Error
 }
 
 /** Returns `true` when `value` is an instance of either `AggregateError`, or one of its subclasses, otherwise `false`. */
-export function isAggregateError(value: unknown): value is AggregateError
+export function isAggregateError<A extends AggregateError>(value: unknown): value is A
 {
   return value instanceof AggregateError
 }
